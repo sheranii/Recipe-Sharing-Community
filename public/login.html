@@ -49,6 +49,15 @@
       
       <!-- Auth Form Box -->
       <div class="form-container" style="padding: 28px;">
+
+        <!-- Active Session Notice (shown if already logged in) -->
+        <div id="already-logged-in-box" style="display: none; background: #e8f4fd; border: 1px solid #b6defb; color: #1a5276; border-radius: var(--radius-sm); padding: 14px; margin-bottom: 20px; font-size: 0.9rem; text-align: center;">
+          <span>You are currently signed in as <strong id="logged-in-user-name"></strong>.</span>
+          <div style="margin-top: 10px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+            <a href="/explore.html" class="btn btn-primary btn-sm">Explore Recipes</a>
+            <button type="button" id="btn-switch-account" class="btn btn-outline btn-sm">Sign Out / Switch</button>
+          </div>
+        </div>
         
         <!-- Toggle Tabs -->
         <div style="display: flex; border-bottom: 1px solid var(--border-light); margin-bottom: 22px;">
@@ -79,9 +88,14 @@
             Log In
           </button>
 
-          <p style="margin-top: 14px; font-size: 0.82rem; color: var(--text-muted); text-align: center;">
-            Sample student login: <strong>aarav@college.edu</strong> / password: <strong>password123</strong>
-          </p>
+          <div style="margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--border-light); text-align: center;">
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">
+              Sample student: <strong>aarav@college.edu</strong> &bull; password: <strong>password123</strong>
+            </p>
+            <button type="button" id="btn-demo-fill" class="btn btn-outline btn-sm" style="font-size: 0.8rem; padding: 5px 12px; cursor: pointer;">
+              ⚡ 1-Click Fill Demo Credentials
+            </button>
+          </div>
         </form>
 
         <!-- 2. REGISTER FORM -->
@@ -99,6 +113,11 @@
           <div class="form-group">
             <label for="register-password" class="form-label">Password (min 6 chars)</label>
             <input type="password" id="register-password" class="form-control" placeholder="••••••••" required minlength="6">
+          </div>
+
+          <div class="form-group">
+            <label for="register-bio" class="form-label">Bio (Optional)</label>
+            <input type="text" id="register-bio" class="form-control" placeholder="e.g. Hosteller exploring easy 15-minute recipes">
           </div>
 
           <button type="submit" id="btn-submit-register" class="btn btn-primary btn-block" style="margin-top: 10px;">
