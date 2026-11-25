@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Login - SavorSpace</title>
+  <meta name="description" content="Log in or register for SavorSpace Recipe Sharing Community.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <a href="/" class="brand-logo">
+          <div class="brand-icon">🌱</div>
+          <div>
+            <span class="brand-text">SavorSpace</span>
+            <span class="brand-tagline">Recipe Community</span>
+          </div>
+        </a>
+
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu">☰</button>
+
+        <div class="nav-links-wrapper" id="nav-links-wrapper">
+          <ul class="nav-links">
+            <li><a href="/" class="nav-link">Home</a></li>
+            <li><a href="/explore.html" class="nav-link">Recipes</a></li>
+            <li><a href="/add-recipe.html" class="nav-link">Add Recipe</a></li>
+            <li><a href="/saved.html" class="nav-link">Saved</a></li>
+            <li><a href="/syllabus.html" class="nav-link">Syllabus</a></li>
+          </ul>
+
+          <div class="nav-auth" id="nav-auth-container">
+            <a href="/login.html" class="btn btn-outline btn-sm">Log In</a>
+            <a href="/login.html?mode=register" class="btn btn-primary btn-sm">Join</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Login Main Container -->
+  <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
+    
+    <div style="max-width: 480px; margin: 0 auto;">
+      
+      <!-- Auth Form Box -->
+      <div class="form-container" style="padding: 28px;">
+        
+        <!-- Toggle Tabs -->
+        <div style="display: flex; border-bottom: 1px solid var(--border-light); margin-bottom: 22px;">
+          <button type="button" id="tab-login" class="btn" style="flex: 1; border-radius: 0; border-bottom: 2px solid var(--color-primary); color: var(--color-primary); background: transparent; font-weight: 700;">
+            Log In
+          </button>
+          <button type="button" id="tab-register" class="btn" style="flex: 1; border-radius: 0; border-bottom: 2px solid transparent; color: var(--text-muted); background: transparent; font-weight: 600;">
+            Create Account
+          </button>
+        </div>
+
+        <!-- Feedback Alert Box -->
+        <div id="auth-error-box" style="display: none; background-color: #fdeeed; border: 1px solid #f9c2bd; color: #a82315; border-radius: var(--radius-sm); padding: 12px 14px; margin-bottom: 18px; font-size: 0.88rem;"></div>
+
+        <!-- 1. LOGIN FORM -->
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-email" class="form-label">College Email</label>
+            <input type="email" id="login-email" class="form-control" placeholder="name@college.edu" required autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label for="login-password" class="form-label">Password</label>
+            <input type="password" id="login-password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+          </div>
+
+          <button type="submit" id="btn-submit-login" class="btn btn-primary btn-block" style="margin-top: 10px;">
+            Log In
+          </button>
+
+          <p style="margin-top: 14px; font-size: 0.82rem; color: var(--text-muted); text-align: center;">
+            Sample student login: <strong>aarav@college.edu</strong> / password: <strong>password123</strong>
+          </p>
+        </form>
+
+        <!-- 2. REGISTER FORM -->
+        <form id="register-form" style="display: none;">
+          <div class="form-group">
+            <label for="register-name" class="form-label">Full Name</label>
+            <input type="text" id="register-name" class="form-control" placeholder="e.g. Maya Sen" required minlength="2">
+          </div>
+
+          <div class="form-group">
+            <label for="register-email" class="form-label">College Email</label>
+            <input type="email" id="register-email" class="form-control" placeholder="maya@college.edu" required>
+          </div>
+
+          <div class="form-group">
+            <label for="register-password" class="form-label">Password (min 6 chars)</label>
+            <input type="password" id="register-password" class="form-control" placeholder="••••••••" required minlength="6">
+          </div>
+
+          <button type="submit" id="btn-submit-register" class="btn btn-primary btn-block" style="margin-top: 10px;">
+            Create Account
+          </button>
+        </form>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <span>SavorSpace Recipe Sharing Community • Student Project</span>
+        <span><a href="/explore.html">Browse Recipes</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/login.js"></script>
+</body>
+</html>

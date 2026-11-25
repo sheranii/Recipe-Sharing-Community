@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share a Recipe - SavorSpace</title>
+  <meta name="description" content="Share your favorite home or student recipes with ingredients, steps, and cooking tips.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <a href="/" class="brand-logo">
+          <div class="brand-icon">🌱</div>
+          <div>
+            <span class="brand-text">SavorSpace</span>
+            <span class="brand-tagline">Recipe Community</span>
+          </div>
+        </a>
+
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu">☰</button>
+
+        <div class="nav-links-wrapper" id="nav-links-wrapper">
+          <ul class="nav-links">
+            <li><a href="/" class="nav-link">Home</a></li>
+            <li><a href="/explore.html" class="nav-link">Recipes</a></li>
+            <li><a href="/add-recipe.html" class="nav-link active">Add Recipe</a></li>
+            <li><a href="/saved.html" class="nav-link">Saved</a></li>
+            <li><a href="/syllabus.html" class="nav-link">Syllabus</a></li>
+          </ul>
+
+          <div class="nav-auth" id="nav-auth-container">
+            <a href="/login.html" class="btn btn-outline btn-sm">Log In</a>
+            <a href="/login.html?mode=register" class="btn btn-primary btn-sm">Join</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Form Main Section -->
+  <main class="container" style="padding-top: 36px; padding-bottom: 50px;">
+    
+    <div class="form-container">
+      <div class="form-header">
+        <h1 class="form-title" id="page-heading">Share a Recipe</h1>
+        <p class="form-subtitle">Contribute your tested dish to the student community cookbook.</p>
+      </div>
+
+      <!-- Auth notice if user is not logged in -->
+      <div id="auth-alert-notice" style="display: none; background-color: #fef7e6; border: 1px solid #f5dfa6; border-radius: var(--radius-sm); padding: 14px 18px; margin-bottom: 20px; font-size: 0.92rem; color: #8a6114;">
+        <strong>Note:</strong> You must be logged in to publish recipes. 
+        <a href="/login.html" style="font-weight: 700; text-decoration: underline; color: #8a6114;">Log in here</a> or use the 1-click Demo student account.
+      </div>
+
+      <!-- Recipe Submission Form -->
+      <form id="recipe-form">
+        
+        <!-- Recipe Title -->
+        <div class="form-group">
+          <label for="recipe-title-input" class="form-label">
+            Recipe Title <span class="required">*</span>
+          </label>
+          <input type="text" 
+                 id="recipe-title-input" 
+                 class="form-control" 
+                 placeholder="e.g. 15-Minute Garlic Chili Noodles" 
+                 required 
+                 minlength="3">
+          <div class="form-hint">A clear, descriptive name helps others find your recipe.</div>
+        </div>
+
+        <!-- Short Description -->
+        <div class="form-group">
+          <label for="recipe-desc-input" class="form-label">
+            Short Description <span class="required">*</span>
+          </label>
+          <textarea id="recipe-desc-input" 
+                    class="form-control" 
+                    rows="2" 
+                    placeholder="Describe what makes this dish great, when you like to cook it, or why it's easy." 
+                    required 
+                    minlength="10"></textarea>
+        </div>
+
+        <!-- Category, Cuisine & Difficulty Row -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="recipe-category-select" class="form-label">
+              Category <span class="required">*</span>
+            </label>
+            <select id="recipe-category-select" class="form-select" required>
+              <option value="">Select Category</option>
+              <option value="Breakfast">Breakfast & Brunch</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+              <option value="Dessert">Dessert & Treats</option>
+              <option value="Snack">Snack</option>
+              <option value="Beverages">Beverages</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="recipe-cuisine-select" class="form-label">
+              Cuisine <span class="required">*</span>
+            </label>
+            <select id="recipe-cuisine-select" class="form-select" required>
+              <option value="">Select Cuisine</option>
+              <option value="Indian">Indian</option>
+              <option value="Italian">Italian</option>
+              <option value="Asian">Asian</option>
+              <option value="Mediterranean">Mediterranean</option>
+              <option value="American">American</option>
+              <option value="Healthy">Healthy & Quick</option>
+              <option value="Other">Other / Fusion</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="recipe-difficulty-select" class="form-label">
+              Difficulty <span class="required">*</span>
+            </label>
+            <select id="recipe-difficulty-select" class="form-select" required>
+              <option value="Easy">Easy (Beginner friendly)</option>
+              <option value="Medium">Medium (Some technique)</option>
+              <option value="Hard">Hard (Takes patience)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Timing & Servings Row -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="recipe-prep-time" class="form-label">
+              Prep Time (minutes) <span class="required">*</span>
+            </label>
+            <input type="number" id="recipe-prep-time" class="form-control" min="0" max="600" value="10" required>
+          </div>
+
+          <div class="form-group">
+            <label for="recipe-cook-time" class="form-label">
+              Cook Time (minutes) <span class="required">*</span>
+            </label>
+            <input type="number" id="recipe-cook-time" class="form-control" min="0" max="600" value="15" required>
+          </div>
+
+          <div class="form-group">
+            <label for="recipe-servings" class="form-label">
+              Servings <span class="required">*</span>
+            </label>
+            <input type="number" id="recipe-servings" class="form-control" min="1" max="20" value="2" required>
+          </div>
+        </div>
+
+        <!-- Image URL with Preset Helpers -->
+        <div class="form-group">
+          <label for="recipe-image-input" class="form-label">Photo URL</label>
+          <input type="url" 
+                 id="recipe-image-input" 
+                 class="form-control" 
+                 placeholder="https://images.unsplash.com/...">
+          <div class="form-hint" style="margin-bottom: 8px;">
+            Paste an image URL, or click a sample preset photo below:
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;" id="image-preset-buttons">
+            <button type="button" class="btn btn-outline btn-sm preset-btn" data-url="https://images.unsplash.com/photo-1621996346565-e3d5d6281691?auto=format&fit=crop&w=800&q=80">🍝 Pasta</button>
+            <button type="button" class="btn btn-outline btn-sm preset-btn" data-url="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80">🍛 Curry</button>
+            <button type="button" class="btn btn-outline btn-sm preset-btn" data-url="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80">🥗 Rice Bowl</button>
+            <button type="button" class="btn btn-outline btn-sm preset-btn" data-url="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80">🧁 Dessert</button>
+            <button type="button" class="btn btn-outline btn-sm preset-btn" data-url="https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&w=800&q=80">🥣 Oats / Brunch</button>
+          </div>
+        </div>
+
+        <!-- Ingredients Dynamic Builder -->
+        <div class="form-group" style="margin-top: 28px;">
+          <label class="form-label">
+            Ingredients List <span class="required">* (at least 2)</span>
+          </label>
+          <div class="form-hint" style="margin-bottom: 10px;">
+            Specify quantity and item (e.g. "200g Paneer, cubed", "2 cloves Garlic, minced").
+          </div>
+          <div id="ingredients-inputs-container">
+            <!-- Dynamic Rows -->
+          </div>
+          <button type="button" id="btn-add-ingredient-row" class="btn btn-secondary btn-sm" style="margin-top: 6px;">
+            + Add Another Ingredient
+          </button>
+        </div>
+
+        <!-- Instructions Dynamic Builder -->
+        <div class="form-group" style="margin-top: 28px;">
+          <label class="form-label">
+            Step-by-Step Instructions <span class="required">* (at least 2)</span>
+          </label>
+          <div class="form-hint" style="margin-bottom: 10px;">
+            Write clear steps in sequential cooking order.
+          </div>
+          <div id="instructions-inputs-container">
+            <!-- Dynamic Rows -->
+          </div>
+          <button type="button" id="btn-add-instruction-row" class="btn btn-secondary btn-sm" style="margin-top: 6px;">
+            + Add Another Step
+          </button>
+        </div>
+
+        <!-- Student Notes / Budget Tips -->
+        <div class="form-group" style="margin-top: 28px;">
+          <label for="recipe-notes-input" class="form-label">Cook's Student Tip (Optional)</label>
+          <textarea id="recipe-notes-input" 
+                    class="form-control" 
+                    rows="2" 
+                    placeholder="e.g. Budget hack: buy frozen spinach instead of fresh; or substitution tip for mini-fridges."></textarea>
+        </div>
+
+        <!-- Error messages container -->
+        <div id="form-error-box" style="display: none; background-color: #fdeeed; border: 1px solid #f9c2bd; color: #a82315; border-radius: var(--radius-sm); padding: 12px 16px; margin: 18px 0; font-size: 0.9rem;"></div>
+
+        <!-- Form Submission Buttons -->
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 28px; border-top: 1px solid var(--border-light); padding-top: 18px;">
+          <a href="/explore.html" class="btn btn-outline">Cancel</a>
+          <button type="submit" id="btn-submit-recipe" class="btn btn-primary">Publish Recipe</button>
+        </div>
+
+      </form>
+    </div>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <span>SavorSpace Recipe Sharing Community • Student Project</span>
+        <span><a href="/syllabus.html">View Syllabus Topics</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/add-recipe.js"></script>
+</body>
+</html>

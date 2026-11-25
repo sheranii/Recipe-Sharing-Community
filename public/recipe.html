@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Details - SavorSpace</title>
+  <meta name="description" content="View detailed recipe ingredients, step-by-step cooking instructions, and community reviews.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <a href="/" class="brand-logo">
+          <div class="brand-icon">🌱</div>
+          <div>
+            <span class="brand-text">SavorSpace</span>
+            <span class="brand-tagline">Recipe Community</span>
+          </div>
+        </a>
+
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu">☰</button>
+
+        <div class="nav-links-wrapper" id="nav-links-wrapper">
+          <ul class="nav-links">
+            <li><a href="/" class="nav-link">Home</a></li>
+            <li><a href="/explore.html" class="nav-link">Recipes</a></li>
+            <li><a href="/add-recipe.html" class="nav-link">Add Recipe</a></li>
+            <li><a href="/saved.html" class="nav-link">Saved</a></li>
+            <li><a href="/syllabus.html" class="nav-link">Syllabus</a></li>
+          </ul>
+
+          <div class="nav-auth" id="nav-auth-container">
+            <a href="/login.html" class="btn btn-outline btn-sm">Log In</a>
+            <a href="/login.html?mode=register" class="btn btn-primary btn-sm">Join</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Recipe Main Container -->
+  <main class="container" style="padding-top: 28px; padding-bottom: 50px;">
+    
+    <!-- Loading state / Container -->
+    <div id="recipe-detail-loading" style="text-align: center; padding: 60px 0; color: var(--text-muted);">
+      Loading recipe details...
+    </div>
+
+    <div id="recipe-detail-content" style="display: none;">
+      
+      <!-- Breadcrumb -->
+      <nav class="recipe-detail-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span>/</span>
+        <a href="/explore.html">Recipes</a> <span>/</span>
+        <span id="breadcrumb-category">Category</span> <span>/</span>
+        <span id="breadcrumb-title" style="color: var(--text-main); font-weight: 600;">Recipe Title</span>
+      </nav>
+
+      <!-- Header & Metadata -->
+      <div class="recipe-detail-header">
+        <h1 class="recipe-detail-title" id="recipe-title">Recipe Title</h1>
+        
+        <p id="recipe-description" style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 18px; max-width: 860px;">
+          Recipe description goes here.
+        </p>
+
+        <div class="recipe-detail-author-bar">
+          <div class="author-info-box">
+            <div class="author-avatar" id="author-avatar">A</div>
+            <div>
+              <div class="author-meta-name" id="author-name">Author Name</div>
+              <div class="author-meta-date" id="recipe-date">Posted on Oct 10, 2026</div>
+            </div>
+          </div>
+
+          <div class="recipe-action-buttons">
+            <button id="btn-save-detail" class="btn btn-outline btn-sm">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="detail-save-icon">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+              <span id="detail-save-text">Save Recipe</span>
+            </button>
+            <button id="btn-copy-link" class="btn btn-outline btn-sm" title="Copy shareable link">
+              🔗 Share
+            </button>
+            <span id="author-owner-actions" style="display: none; gap: 8px;">
+              <a href="#" id="btn-edit-recipe" class="btn btn-secondary btn-sm">Edit</a>
+              <button id="btn-delete-recipe" class="btn btn-danger btn-sm">Delete</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="recipe-detail-hero">
+        <img id="recipe-image" src="" alt="Recipe photo" onerror="this.src='https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&w=800&q=80';">
+      </div>
+
+      <!-- Quick Stats Strip -->
+      <div class="recipe-stats-strip">
+        <div class="stat-box">
+          <div class="stat-box-label">Prep Time</div>
+          <div class="stat-box-value" id="stat-prep-time">10 mins</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">Cook Time</div>
+          <div class="stat-box-value" id="stat-cook-time">15 mins</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">Servings</div>
+          <div class="stat-box-value" id="stat-servings">2 people</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">Difficulty</div>
+          <div class="stat-box-value" id="stat-difficulty">Easy</div>
+        </div>
+      </div>
+
+      <!-- Content Columns: Ingredients & Instructions -->
+      <div class="recipe-content-layout">
+        
+        <!-- Left Column: Ingredients Checklist -->
+        <aside class="ingredients-card">
+          <h2 class="ingredients-title">Ingredients</h2>
+          <p class="ingredients-hint">Check off ingredients as you prepare them:</p>
+          <ul class="ingredients-list" id="ingredients-list">
+            <!-- Populated dynamically with checkboxes -->
+          </ul>
+
+          <!-- Student Notes / Chef Tips -->
+          <div class="recipe-notes-card" id="recipe-notes-card" style="display: none;">
+            <div class="recipe-notes-title">💡 Student Kitchen Tip</div>
+            <div class="recipe-notes-text" id="recipe-notes-text"></div>
+          </div>
+        </aside>
+
+        <!-- Right Column: Step-by-Step Instructions -->
+        <section class="instructions-wrapper">
+          <h2 class="instructions-title">Step-by-Step Instructions</h2>
+          <ol class="steps-list" id="steps-list">
+            <!-- Populated dynamically -->
+          </ol>
+        </section>
+
+      </div>
+
+      <!-- Reviews and Ratings Section -->
+      <section class="reviews-section" id="reviews-section">
+        <div class="reviews-header">
+          <div>
+            <h2 style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--text-main);">
+              Community Reviews
+            </h2>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+              <span id="reviews-avg-stars" style="color: #e09322; font-weight: 700; font-size: 1.1rem;">★ 5.0</span>
+              <span id="reviews-count-text" style="color: var(--text-muted); font-size: 0.9rem;">(2 reviews)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Review Form -->
+        <div class="review-form-card" id="review-form-container">
+          <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">
+            Leave a Review
+          </h3>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">
+            Tried this dish? Share your rating and any tips with the community.
+          </p>
+
+          <form id="recipe-review-form">
+            <div class="form-group">
+              <label class="form-label">Your Rating:</label>
+              <div class="star-rating-selector" id="star-selector">
+                <button type="button" class="star-btn active" data-rating="1">★</button>
+                <button type="button" class="star-btn active" data-rating="2">★</button>
+                <button type="button" class="star-btn active" data-rating="3">★</button>
+                <button type="button" class="star-btn active" data-rating="4">★</button>
+                <button type="button" class="star-btn active" data-rating="5">★</button>
+              </div>
+              <input type="hidden" id="selected-rating-value" value="5">
+            </div>
+
+            <div class="form-group">
+              <label for="review-comment" class="form-label">Your Comment:</label>
+              <textarea id="review-comment" 
+                        class="form-control" 
+                        rows="3" 
+                        placeholder="How did it turn out? Any ingredient substitutions you made?" 
+                        required></textarea>
+            </div>
+
+            <button type="submit" id="btn-submit-review" class="btn btn-primary btn-sm">Submit Review</button>
+          </form>
+        </div>
+
+        <!-- Reviews List -->
+        <div class="reviews-list" id="reviews-list">
+          <!-- Populated dynamically -->
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <span>SavorSpace Recipe Sharing Community • College Project 2026</span>
+        <span><a href="/explore.html">Browse All Recipes</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/recipe-detail.js"></script>
+</body>
+</html>

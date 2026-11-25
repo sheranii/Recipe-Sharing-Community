@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SavorSpace - Student Recipe Sharing Community</title>
+  <meta name="description"
+    content="A simple community project where students share and browse everyday home-cooked recipes.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+</head>
+
+<body>
+
+  <!-- Site Header & Navigation -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <a href="/" class="brand-logo" id="brand-logo-link">
+          <div class="brand-icon">🌱</div>
+          <div>
+            <span class="brand-text">SavorSpace</span>
+            <span class="brand-tagline">Recipe Community</span>
+          </div>
+        </a>
+
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu">
+          ☰
+        </button>
+
+        <div class="nav-links-wrapper" id="nav-links-wrapper">
+          <ul class="nav-links">
+            <li><a href="/" class="nav-link active" id="nav-home">Home</a></li>
+            <li><a href="/explore.html" class="nav-link" id="nav-explore">Recipes</a></li>
+            <li><a href="/add-recipe.html" class="nav-link" id="nav-add">Add Recipe</a></li>
+            <li><a href="/saved.html" class="nav-link" id="nav-saved">Saved</a></li>
+          </ul>
+
+          <div class="nav-auth" id="nav-auth-container">
+            <a href="/login.html" class="btn btn-outline btn-sm">Log In</a>
+            <a href="/login.html?mode=register" class="btn btn-primary btn-sm">Join</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Project Introduction & Search -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Student Recipe Sharing Community</h1>
+          <p class="hero-subtitle">
+            A simple web platform to find and share everyday home-cooked recipes, quick dorm meals, and favorite dishes.
+          </p>
+
+          <!-- Search Form -->
+          <div class="hero-search-wrapper">
+            <form id="hero-search-form" class="search-form" action="/explore.html" method="GET">
+              <input type="text" id="hero-search-input" name="search" class="search-input"
+                placeholder="Search by recipe name or ingredient..." autocomplete="off">
+              <button type="submit" id="hero-search-submit" class="search-btn">Search</button>
+            </form>
+          </div>
+
+          <!-- Quick Filter Tags -->
+          <div class="quick-tags" id="quick-category-tags">
+            <span class="quick-tag-label">Tags:</span>
+            <a href="/explore.html?category=Dinner" class="tag-pill">Dinner</a>
+            <a href="/explore.html?category=Breakfast" class="tag-pill">Breakfast</a>
+            <a href="/explore.html?category=Lunch" class="tag-pill">Lunch</a>
+            <a href="/explore.html?category=Dessert" class="tag-pill">Dessert</a>
+            <a href="/explore.html?maxTime=25" class="tag-pill">Under 25 mins</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Recipes Listing -->
+    <section class="section" id="recent-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Community Recipes</h2>
+            <p class="section-description">Browse recipes contributed by students.</p>
+          </div>
+          <a href="/explore.html" class="section-link">View all recipes →</a>
+        </div>
+
+        <div class="recipe-grid" id="recent-recipe-grid">
+          <!-- Dynamically populated by main.js from /api/recipes -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Simple Add Recipe Call-to-Action -->
+    <section class="container">
+      <div class="cta-banner">
+        <div class="cta-text">
+          <h3>Have a recipe to share?</h3>
+          <p>Add your favorite dish so other students can try it out.</p>
+        </div>
+        <a href="/add-recipe.html" class="btn btn-primary" id="home-cta-share-btn">Add a Recipe</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>SavorSpace</h4>
+          <p>
+            A beginner-level Recipe Sharing Community project developed for the Web Development Course.
+          </p>
+          <p style="margin-top: 6px; font-size: 0.8rem; color: var(--text-muted);">
+            Built with HTML, CSS, JavaScript, Node.js, and Express.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h5>Pages</h5>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/explore.html">Recipes</a></li>
+            <li><a href="/add-recipe.html">Add Recipe</a></li>
+            <li><a href="/saved.html">Saved</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Course Work</h5>
+          <ul>
+            <li><a href="/syllabus.html">Syllabus Topics</a></li>
+            <li><a href="/login.html">Student Login</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>SavorSpace • Student Web Development Project</span>
+        <span><a href="/syllabus.html">View Syllabus Coverage</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

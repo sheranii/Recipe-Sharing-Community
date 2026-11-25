@@ -1,0 +1,428 @@
+[
+  {
+    "id": "recipe-1793080090214",
+    "title": "Quick Garlic Pasta",
+    "description": "Super fast and delicious pasta recipe.",
+    "category": "Breakfast",
+    "cuisine": "Indian",
+    "prepTime": 10,
+    "cookTime": 15,
+    "servings": 2,
+    "difficulty": "Easy",
+    "image": "https://images.unsplash.com/photo-1621996346565-e3d5d6281691?auto=format&fit=crop&w=800&q=80",
+    "ingredients": [
+      "250g Penne pasta",
+      "3 cloves garlic, minced",
+      "1 tbsp olive oil"
+    ],
+    "instructions": [
+      "Bring a large pot of salted water to a boil and cook pasta until al dente.",
+      "Heat olive oil in a pan over medium heat and sauté minced garlic until fragrant."
+    ],
+    "notes": "",
+    "author": {
+      "id": "user-1",
+      "name": "Aarav Sharma"
+    },
+    "createdAt": "2026-10-27T05:48:10.214Z",
+    "likes": 0,
+    "savedBy": [],
+    "reviews": []
+  },
+  {
+    "id": "recipe-1",
+    "title": "One-Pan Creamy Garlic Spinach Pasta",
+    "description": "A rich, comforting pasta that comes together in under 25 minutes using just one skillet. Ideal for busy exam nights with minimal cleanup.",
+    "category": "Dinner",
+    "cuisine": "Italian",
+    "prepTime": 10,
+    "cookTime": 15,
+    "servings": 2,
+    "difficulty": "Easy",
+    "image": "https://images.unsplash.com/photo-1621996346565-e3d5d6281691?auto=format&fit=crop&w=800&q=80",
+    "ingredients": [
+      "220g penne or rigatoni pasta",
+      "2 tablespoons olive oil or butter",
+      "4 cloves garlic, finely minced",
+      "2 cups fresh baby spinach leaves",
+      "1/2 cup heavy cream (or milk with 1 tsp cornstarch)",
+      "1/3 cup grated Parmesan cheese",
+      "1/2 teaspoon red chili flakes",
+      "Salt and freshly cracked black pepper to taste",
+      "1/4 cup reserved pasta water"
+    ],
+    "instructions": [
+      "Boil salted water in a pot and cook pasta until al dente. Reserve 1/4 cup of starchy pasta water before draining.",
+      "Heat olive oil or butter in a wide skillet over medium heat. Add the minced garlic and red chili flakes, sauteing for 60 seconds until fragrant without browning.",
+      "Lower the heat and pour in the heavy cream and reserved pasta cooking water. Simmer gently for 2 minutes.",
+      "Toss in the freshly washed baby spinach and stir until gently wilted.",
+      "Fold in the cooked pasta and grated Parmesan cheese. Stir vigorously until a silky, creamy sauce coats every noodle.",
+      "Season with salt and fresh cracked pepper. Serve hot with an extra sprinkle of Parmesan."
+    ],
+    "notes": "Student tip: If you don't have heavy cream in your mini-fridge, whisk 1/2 cup of whole milk with a tablespoon of cream cheese or cornstarch.",
+    "author": {
+      "id": "user-1",
+      "name": "Aarav Sharma"
+    },
+    "createdAt": "2026-10-10T14:20:00.000Z",
+    "likes": 24,
+    "savedBy": [
+      "user-1",
+      "user-2"
+    ],
+    "reviews": [
+      {
+        "id": "rev-1",
+        "userId": "user-2",
+        "userName": "Priya Patel",
+        "rating": 5,
+        "comment": "Made this during mid-sem prep week. Took literally 20 minutes and barely dirtied dishes. 10/10!",
+        "date": "2026-10-12T18:30:00.000Z"
+      },
+      {
+        "id": "rev-2",
+        "userId": "user-3",
+        "userName": "Rohan Verma",
+        "rating": 5,
+        "comment": "Added some sliced sautéed mushrooms to it. The garlic sauce is spot-on.",
+        "date": "2026-10-15T20:10:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "recipe-2",
+    "title": "Homestyle Masala Egg Curry",
+    "description": "Flavorful, fragrant hard-boiled eggs simmered in a spiced onion-tomato gravy. Reminds you of home cooking when living away in a college dorm.",
+    "category": "Lunch",
+    "cuisine": "Indian",
+    "prepTime": 10,
+    "cookTime": 20,
+    "servings": 3,
+    "difficulty": "Easy",
+    "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80",
+    "ingredients": [
+      "4 large eggs, hard-boiled and peeled",
+      "2 medium red onions, finely chopped",
+      "2 ripe tomatoes, pureed or finely diced",
+      "1 tablespoon ginger-garlic paste",
+      "1 green chili, slit lengthwise",
+      "1/2 teaspoon turmeric powder",
+      "1 teaspoon Kashmiri red chili powder",
+      "1 teaspoon coriander powder",
+      "1/2 teaspoon garam masala",
+      "2 tablespoons cooking oil",
+      "Fresh coriander leaves for garnish",
+      "Salt to taste"
+    ],
+    "instructions": [
+      "Prick the peeled boiled eggs lightly with a fork. Rub with a pinch of turmeric and salt.",
+      "Heat 1 tablespoon oil in a pan and shallow fry the eggs for 2-3 minutes until a light golden skin forms. Remove and set aside.",
+      "In the same pan, add the remaining oil. Add chopped onions and sauté over medium heat until golden brown.",
+      "Add the ginger-garlic paste and slit green chili. Sauté for 1 minute until raw smell dissipates.",
+      "Pour in tomato puree along with turmeric, red chili powder, coriander powder, and salt. Cook until oil starts separating from the masala.",
+      "Pour in 3/4 cup of warm water, bring the gravy to a gentle simmer, and gently lower the fried eggs into the sauce.",
+      "Cover and simmer on low heat for 5-7 minutes so the eggs absorb all the flavors.",
+      "Finish with garam masala and freshly chopped coriander. Enjoy warm with steamed rice or rotis."
+    ],
+    "notes": "Student tip: An electric kettle works great for boiling eggs if you're in a hostel room!",
+    "author": {
+      "id": "user-2",
+      "name": "Priya Patel"
+    },
+    "createdAt": "2026-10-12T11:00:00.000Z",
+    "likes": 38,
+    "savedBy": [
+      "user-1",
+      "user-2"
+    ],
+    "reviews": [
+      {
+        "id": "rev-3",
+        "userId": "user-1",
+        "userName": "Aarav Sharma",
+        "rating": 5,
+        "comment": "Genuine comfort food! The gravy consistency is perfect with plain basmati rice.",
+        "date": "2026-10-14T13:45:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "recipe-3",
+    "title": "Crispy Tofu & Edamame Teriyaki Bowl",
+    "description": "Golden pan-crisped tofu cubes tossed in a quick 4-ingredient homemade teriyaki glaze, served over fluffy rice with steamed edamame.",
+    "category": "Dinner",
+    "cuisine": "Asian",
+    "prepTime": 15,
+    "cookTime": 15,
+    "servings": 2,
+    "difficulty": "Medium",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80",
+    "ingredients": [
+      "250g firm tofu, pressed and cut into 1-inch cubes",
+      "2 tablespoons cornstarch",
+      "2 tablespoons sesame oil or neutral cooking oil",
+      "1 cup shelled edamame (fresh or frozen)",
+      "2 cups cooked jasmine or brown rice",
+      "3 tablespoons soy sauce",
+      "1.5 tablespoons honey or maple syrup",
+      "1 clove garlic, grated",
+      "1/2 teaspoon grated fresh ginger",
+      "Toasted sesame seeds and sliced green onions for garnish"
+    ],
+    "instructions": [
+      "Press the tofu with paper towels to remove excess moisture. Toss cubes in cornstarch until lightly and evenly coated.",
+      "Heat sesame oil in a non-stick pan over medium-high heat. Add tofu cubes in a single layer and pan-fry for 7-8 minutes, turning occasionally until all sides are crunchy and golden.",
+      "In a small cup, whisk together soy sauce, honey, grated garlic, and ginger with 2 tablespoons of water.",
+      "Pour the glaze directly over the hot crispy tofu in the pan. Simmer for 1-2 minutes until the sauce thickens into a shiny coating.",
+      "Steam or boil the edamame for 3 minutes with a pinch of salt.",
+      "Assemble bowls: scoop cooked rice at the base, arrange teriyaki tofu and bright green edamame on top.",
+      "Garnish with toasted sesame seeds and chopped green onion."
+    ],
+    "notes": "Cost saver: Buy blocks of tofu from local grocery stores; it's one of the cheapest high-protein staples for college budgets.",
+    "author": {
+      "id": "user-1",
+      "name": "Aarav Sharma"
+    },
+    "createdAt": "2026-10-15T09:30:00.000Z",
+    "likes": 19,
+    "savedBy": [
+      "user-3"
+    ],
+    "reviews": []
+  },
+  {
+    "id": "recipe-4",
+    "title": "Warm Spiced Chickpea Shakshuka",
+    "description": "Poached eggs nestled in a hearty, smoky cumin-and-paprika spiced tomato sauce with chickpeas. Perfect for a cozy weekend brunch.",
+    "category": "Breakfast",
+    "cuisine": "Mediterranean",
+    "prepTime": 10,
+    "cookTime": 20,
+    "servings": 2,
+    "difficulty": "Easy",
+    "image": "https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&w=800&q=80",
+    "ingredients": [
+      "3 large fresh eggs",
+      "1 can (400g) crushed or diced tomatoes",
+      "1 cup cooked or canned chickpeas, rinsed",
+      "1 medium onion, diced",
+      "1 red bell pepper, diced",
+      "2 cloves garlic, minced",
+      "1 teaspoon ground cumin",
+      "1 teaspoon smoked paprika",
+      "1/4 teaspoon cayenne pepper (optional)",
+      "2 tablespoons olive oil",
+      "Crumbled feta cheese and chopped parsley to finish",
+      "Crusty bread or toasted pita for dipping"
+    ],
+    "instructions": [
+      "Warm the olive oil in a skillet over medium heat. Sauté the chopped onion and red bell pepper for 5 minutes until soft and sweet.",
+      "Add minced garlic, cumin, smoked paprika, and cayenne pepper. Stir continuously for 1 minute until fragrant.",
+      "Pour in the canned tomatoes and chickpeas. Season with salt and black pepper. Simmer uncovered for 10 minutes until the sauce thickens nicely.",
+      "Use the back of a spoon to create 3 shallow wells in the bubbling tomato sauce.",
+      "Carefully crack an egg into each well. Cover the skillet with a lid and cook on medium-low for 5 to 7 minutes until egg whites are set but yolks remain soft.",
+      "Remove from heat, crumble fresh feta cheese on top, and scatter chopped parsley.",
+      "Serve right out of the skillet with thick slices of warm crusty bread."
+    ],
+    "notes": "Great for sharing: Put the whole skillet in the middle of the table with toast and dig in with your roommates.",
+    "author": {
+      "id": "user-3",
+      "name": "Rohan Verma"
+    },
+    "createdAt": "2026-10-16T16:00:00.000Z",
+    "likes": 31,
+    "savedBy": [
+      "user-1"
+    ],
+    "reviews": [
+      {
+        "id": "rev-4",
+        "userId": "user-2",
+        "userName": "Priya Patel",
+        "rating": 5,
+        "comment": "The chickpeas make this so filling! We had it for Sunday brunch with toasted sourdough.",
+        "date": "2026-10-18T10:15:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "recipe-5",
+    "title": "Overnight Oats with Chia, Banana & Berries",
+    "description": "Zero morning cooking required. Mix oats, chia seeds, and milk the night before in a mason jar for a grab-and-go morning breakfast before early lectures.",
+    "category": "Breakfast",
+    "cuisine": "Healthy",
+    "prepTime": 10,
+    "cookTime": 0,
+    "servings": 1,
+    "difficulty": "Easy",
+    "image": "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&w=800&q=80",
+    "ingredients": [
+      "1/2 cup rolled oats",
+      "1 tablespoon chia seeds",
+      "3/4 cup milk (dairy or almond milk)",
+      "1 tablespoon honey or maple syrup",
+      "1/4 teaspoon ground cinnamon",
+      "1/2 ripe banana, sliced",
+      "Handful of blueberries or chopped strawberries",
+      "1 tablespoon peanut butter or crushed walnuts"
+    ],
+    "instructions": [
+      "In a clean jar or small airtight container, combine rolled oats, chia seeds, and cinnamon.",
+      "Pour in milk and sweetener (honey or maple syrup). Stir thoroughly with a spoon so no dry pockets remain.",
+      "Seal the container and place it in the refrigerator for at least 4 hours, or ideally overnight.",
+      "In the morning, give it a quick stir. If it is too thick, splash in a tablespoon of milk.",
+      "Top with sliced banana, fresh berries, and a dollop of peanut butter right before eating."
+    ],
+    "notes": "Prep-ahead hero: Make 3 or 4 jars on Sunday night and you're set for breakfast throughout the week.",
+    "author": {
+      "id": "user-2",
+      "name": "Priya Patel"
+    },
+    "createdAt": "2026-10-18T08:00:00.000Z",
+    "likes": 42,
+    "savedBy": [
+      "user-2"
+    ],
+    "reviews": []
+  },
+  {
+    "id": "recipe-6",
+    "title": "Classic Vegetable Pulao with Mint & Raita",
+    "description": "Fragrant basmati rice gently cooked with whole spices, green peas, carrots, and potatoes. A balanced, budget-friendly one-pot meal.",
+    "category": "Lunch",
+    "cuisine": "Indian",
+    "prepTime": 15,
+    "cookTime": 20,
+    "servings": 4,
+    "difficulty": "Easy",
+    "image": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80",
+    "ingredients": [
+      "1.5 cups long grain Basmati rice, washed and soaked for 20 mins",
+      "1 medium potato, cubed",
+      "1 medium carrot, sliced",
+      "1/2 cup fresh or frozen green peas",
+      "1 large onion, thinly sliced",
+      "1 bay leaf, 2 green cardamoms, 1 inch cinnamon stick, 3 cloves",
+      "1 teaspoon cumin seeds (jeera)",
+      "1 tablespoon ginger-garlic paste",
+      "2 green chilies, slit",
+      "2 tablespoons ghee or vegetable oil",
+      "3 cups water",
+      "Fresh mint and coriander leaves",
+      "Salt to taste"
+    ],
+    "instructions": [
+      "Rinse basmati rice until the water runs clear and let it soak in cold water for 20 minutes, then drain.",
+      "Heat ghee or oil in a deep pot. Add the whole spices: cumin seeds, bay leaf, cardamoms, cinnamon, and cloves. Let them crackle for 30 seconds.",
+      "Add sliced onions and green chilies. Sauté until the onions turn translucent and light golden.",
+      "Add ginger-garlic paste and cook for 1 minute until aromatic.",
+      "Add diced carrots, potatoes, and green peas. Sauté the vegetables for 2-3 minutes.",
+      "Add the drained basmati rice, chopped mint, and coriander. Gently mix for 1 minute without breaking the long rice grains.",
+      "Pour in 3 cups of water and add salt. Bring to a rolling boil.",
+      "Once boiling, reduce the heat to low, cover with a tight lid, and cook undisturbed for 12-14 minutes.",
+      "Turn off heat and let it rest covered for 5 minutes. Fluff gently with a fork and serve with cucumber raita."
+    ],
+    "notes": "Leftover hack: Tastes even better the next day for campus lunch. Pack in a thermal lunch box.",
+    "author": {
+      "id": "user-2",
+      "name": "Priya Patel"
+    },
+    "createdAt": "2026-10-19T13:10:00.000Z",
+    "likes": 27,
+    "savedBy": [
+      "user-1"
+    ],
+    "reviews": []
+  },
+  {
+    "id": "recipe-7",
+    "title": "Fudgy 5-Minute Banana Mug Cake",
+    "description": "Craving something sweet while studying late? This egg-free, warm chocolate-banana mug cake cooks in 90 seconds in a microwave.",
+    "category": "Dessert",
+    "cuisine": "American",
+    "prepTime": 5,
+    "cookTime": 2,
+    "servings": 1,
+    "difficulty": "Easy",
+    "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
+    "ingredients": [
+      "1/2 ripe banana, mashed thoroughly",
+      "3 tablespoons all-purpose flour (maida or whole wheat flour)",
+      "1 tablespoon unsweetened cocoa powder",
+      "1.5 tablespoons brown sugar or regular sugar",
+      "1/4 teaspoon baking powder",
+      "Pinch of salt",
+      "3 tablespoons milk",
+      "1 tablespoon melted butter or vegetable oil",
+      "1 tablespoon chocolate chips (optional)"
+    ],
+    "instructions": [
+      "In a standard microwave-safe ceramic mug, thoroughly mash the ripe banana with a fork until smooth.",
+      "Add milk and melted butter to the mug. Stir to combine.",
+      "Add flour, cocoa powder, sugar, baking powder, and pinch of salt. Mix with a small fork until a smooth batter forms.",
+      "Drop chocolate chips into the center of the batter if desired (they will sink and create a melted molten center).",
+      "Microwave on high power for 70 to 90 seconds. The top should look cooked through and springy.",
+      "Allow to cool for 2 minutes before eating directly from the mug."
+    ],
+    "notes": "Hostel favorite: All you need is a fork and a coffee mug. No oven, no beater, no mess.",
+    "author": {
+      "id": "user-1",
+      "name": "Aarav Sharma"
+    },
+    "createdAt": "2026-10-21T21:40:00.000Z",
+    "likes": 53,
+    "savedBy": [],
+    "reviews": [
+      {
+        "id": "rev-5",
+        "userId": "user-3",
+        "userName": "Rohan Verma",
+        "rating": 5,
+        "comment": "Literal lifesaver at 1 AM while writing lab reports. Added peanut butter instead of choc chips!",
+        "date": "2026-10-22T01:15:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "recipe-8",
+    "title": "Sheet Pan Lemon Herb Roasted Veggies & Paneer",
+    "description": "Toss colorful seasonal vegetables and paneer cubes with lemon juice, oregano, and olive oil, then bake until tender and charred at the edges.",
+    "category": "Dinner",
+    "cuisine": "Mediterranean",
+    "prepTime": 15,
+    "cookTime": 25,
+    "servings": 3,
+    "difficulty": "Easy",
+    "image": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80",
+    "ingredients": [
+      "200g paneer or firm tofu, cubed",
+      "1 zucchini or yellow squash, sliced into half-moons",
+      "1 red bell pepper, cut into bite-sized chunks",
+      "1 red onion, cut into wedges",
+      "1 cup cherry tomatoes",
+      "2.5 tablespoons olive oil",
+      "1.5 tablespoons fresh lemon juice",
+      "1 teaspoon dried oregano",
+      "1/2 teaspoon garlic powder",
+      "Salt and freshly ground black pepper to taste"
+    ],
+    "instructions": [
+      "Preheat your oven or toaster oven to 200°C (400°F). Line a baking sheet with parchment paper.",
+      "Place paneer cubes, zucchini, bell pepper, onion wedges, and cherry tomatoes directly onto the baking tray.",
+      "In a small bowl, whisk olive oil, lemon juice, dried oregano, garlic powder, salt, and black pepper.",
+      "Drizzle the dressing over the vegetables and paneer. Use your hands to toss gently until everything is evenly coated.",
+      "Spread the ingredients into a single flat layer so they roast rather than steam.",
+      "Bake for 20-25 minutes until the veggies are tender and the edges of the paneer are slightly golden and caramelized.",
+      "Squeeze extra lemon juice over top and serve warm with couscous, rice, or flatbread."
+    ],
+    "notes": "Meal prep tip: Roasting a double batch on Sunday gives you quick lunches for three days.",
+    "author": {
+      "id": "user-3",
+      "name": "Rohan Verma"
+    },
+    "createdAt": "2026-10-23T17:15:00.000Z",
+    "likes": 29,
+    "savedBy": [],
+    "reviews": []
+  }
+]

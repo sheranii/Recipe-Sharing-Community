@@ -1,0 +1,38 @@
+[
+  {
+    "id": "user-1",
+    "name": "Aarav Sharma",
+    "email": "aarav@college.edu",
+    "password": "$2b$10$ThkIJ/6zWfTQMgOYdYn5he.arSY5RSOt8KBFlKwR77e6Uy4zUl0XO",
+    "bio": "3rd-year CS student. Passionate about 20-minute dinners and high-protein meal prep.",
+    "savedRecipeIds": [
+      "recipe-1",
+      "recipe-4",
+      "recipe-6"
+    ],
+    "createdAt": "2026-09-01T10:00:00.000Z"
+  },
+  {
+    "id": "user-2",
+    "name": "Priya Patel",
+    "email": "priya@college.edu",
+    "password": "$2b$10$ThkIJ/6zWfTQMgOYdYn5he.arSY5RSOt8KBFlKwR77e6Uy4zUl0XO",
+    "bio": "Hostel room chef. Proving that comforting homemade food doesn't require a giant kitchen.",
+    "savedRecipeIds": [
+      "recipe-2",
+      "recipe-5"
+    ],
+    "createdAt": "2026-09-05T12:30:00.000Z"
+  },
+  {
+    "id": "user-3",
+    "name": "Rohan Verma",
+    "email": "rohan@college.edu",
+    "password": "$2b$10$ThkIJ/6zWfTQMgOYdYn5he.arSY5RSOt8KBFlKwR77e6Uy4zUl0XO",
+    "bio": "Weekend baker & brunch enthusiast. Love simple Mediterranean bowls.",
+    "savedRecipeIds": [
+      "recipe-3"
+    ],
+    "createdAt": "2026-09-12T08:15:00.000Z"
+  }
+]

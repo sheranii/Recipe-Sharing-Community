@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Recipes - SavorSpace</title>
+  <meta name="description" content="Browse and search student-friendly recipes filtered by meal type, cuisine, cook time, and difficulty.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <a href="/" class="brand-logo">
+          <div class="brand-icon">🌱</div>
+          <div>
+            <span class="brand-text">SavorSpace</span>
+            <span class="brand-tagline">Recipe Community</span>
+          </div>
+        </a>
+
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu">☰</button>
+
+        <div class="nav-links-wrapper" id="nav-links-wrapper">
+          <ul class="nav-links">
+            <li><a href="/" class="nav-link">Home</a></li>
+            <li><a href="/explore.html" class="nav-link active">Recipes</a></li>
+            <li><a href="/add-recipe.html" class="nav-link">Add Recipe</a></li>
+            <li><a href="/saved.html" class="nav-link">Saved</a></li>
+            <li><a href="/syllabus.html" class="nav-link">Syllabus</a></li>
+          </ul>
+
+          <div class="nav-auth" id="nav-auth-container">
+            <a href="/login.html" class="btn btn-outline btn-sm">Log In</a>
+            <a href="/login.html?mode=register" class="btn btn-primary btn-sm">Join</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Explore Section -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 48px;">
+    
+    <div style="margin-bottom: 22px;">
+      <h1 style="font-family: var(--font-display); font-size: 1.85rem; font-weight: 700; color: var(--text-main);">
+        Explore Community Recipes
+      </h1>
+      <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 4px;">
+        Find dishes by ingredients you have on hand, time available, or cuisine cravings.
+      </p>
+    </div>
+
+    <!-- Filter Control Panel -->
+    <section class="filter-panel" aria-label="Recipe Filters">
+      <form id="explore-filter-form" onsubmit="event.preventDefault(); applyFilters();">
+        <div class="filter-grid">
+          
+          <!-- Search Input -->
+          <div class="filter-group">
+            <label for="filter-search" class="filter-label">Search Recipe / Ingredient</label>
+            <input type="text" 
+                   id="filter-search" 
+                   class="filter-input" 
+                   placeholder="e.g. Garlic, Pasta, Egg, Tofu...">
+          </div>
+
+          <!-- Category Filter -->
+          <div class="filter-group">
+            <label for="filter-category" class="filter-label">Category</label>
+            <select id="filter-category" class="filter-select">
+              <option value="All">All Categories</option>
+              <option value="Breakfast">Breakfast & Brunch</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+              <option value="Dessert">Dessert & Treats</option>
+              <option value="Snack">Snack</option>
+            </select>
+          </div>
+
+          <!-- Cuisine Filter -->
+          <div class="filter-group">
+            <label for="filter-cuisine" class="filter-label">Cuisine</label>
+            <select id="filter-cuisine" class="filter-select">
+              <option value="All">All Cuisines</option>
+              <option value="Indian">Indian</option>
+              <option value="Italian">Italian</option>
+              <option value="Asian">Asian</option>
+              <option value="Mediterranean">Mediterranean</option>
+              <option value="American">American</option>
+              <option value="Healthy">Healthy & Quick</option>
+            </select>
+          </div>
+
+          <!-- Max Time Filter -->
+          <div class="filter-group">
+            <label for="filter-time" class="filter-label">Total Time</label>
+            <select id="filter-time" class="filter-select">
+              <option value="All">Any Duration</option>
+              <option value="15">Under 15 mins</option>
+              <option value="25">Under 25 mins</option>
+              <option value="35">Under 35 mins</option>
+              <option value="50">Under 50 mins</option>
+            </select>
+          </div>
+
+          <!-- Sort Filter -->
+          <div class="filter-group">
+            <label for="filter-sort" class="filter-label">Sort By</label>
+            <select id="filter-sort" class="filter-select">
+              <option value="newest">Newest First</option>
+              <option value="popular">Most Liked</option>
+              <option value="quickest">Quickest Cook Time</option>
+              <option value="highest-rated">Highest Rated</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 14px; border-top: 1px solid var(--border-light); padding-top: 12px;">
+          <button type="button" id="btn-clear-filters" class="btn btn-outline btn-sm">Clear All Filters</button>
+          <button type="submit" class="btn btn-primary btn-sm">Apply Filters</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Results Status Bar -->
+    <div class="filter-summary-bar">
+      <div>
+        <strong id="results-count" style="color: var(--text-main);">0</strong> recipes found
+        <span id="active-filters-badges" style="margin-left: 10px;"></span>
+      </div>
+    </div>
+
+    <!-- Recipes Grid -->
+    <section class="recipe-grid" id="explore-recipe-grid" aria-label="Recipes List">
+      <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);">
+        Loading community recipes...
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <span>SavorSpace Recipe Sharing Community • Student Project</span>
+        <span><a href="/syllabus.html">View Syllabus Topics</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/explore.js"></script>
+</body>
+</html>
