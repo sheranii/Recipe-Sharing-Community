@@ -108,6 +108,9 @@ function validateRegister(req, res, next) {
 
   req.body.name = sanitizeString(name);
   req.body.email = email.trim().toLowerCase();
+  if (req.body.bio) {
+    req.body.bio = sanitizeString(req.body.bio);
+  }
 
   next();
 }

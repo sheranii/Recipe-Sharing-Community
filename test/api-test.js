@@ -11,6 +11,8 @@
 const assert = require('assert');
 const { app } = require('../server');
 const http = require('http');
+const { USERS_FILE } = require('../config/constants');
+const { readJsonFile, writeJsonFile } = require('../services/fileStorage');
 
 let serverInstance;
 let PORT = 3099; // Test port to avoid conflict
@@ -18,6 +20,7 @@ let BASE_URL = `http://localhost:${PORT}`;
 
 let authToken = '';
 let testRecipeId = '';
+let createdTestUserEmail = `test_runner_${Date.now()}@college.edu`;
 
 async function runTests() {
   console.log('\n--- Starting SavorSpace API Test Suite ---\n');
@@ -89,6 +92,72 @@ async function runTests() {
       assert.ok(data.token);
       assert.strictEqual(data.user.email, 'aarav@college.edu');
       authToken = data.token;
+    });
+
+    // Test 4b: Login with invalid password returns 401
+    await test('POST /api/auth/login with incorrect password rejected with 401', async () => {
+      const res = await fetch(`${BASE_URL}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: 'aarav@college.edu',
+          password: 'wrongpassword'
+        })
+      });
+      assert.strictEqual(res.status, 401);
+      const data = await res.json();
+      assert.strictEqual(data.success, false);
+    });
+
+    // Test 4c: Register a new student account
+    await test('POST /api/auth/register creates user and returns JWT token', async () => {
+      const res = await fetch(`${BASE_URL}/api/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Test Cadet',
+          email: createdTestUserEmail,
+          password: 'securepassword123',
+          bio: 'Quick microwave snacks fan'
+        })
+      });
+      assert.strictEqual(res.status, 201);
+      const data = await res.json();
+      assert.strictEqual(data.success, true);
+      assert.ok(data.token);
+      assert.strictEqual(data.user.email, createdTestUserEmail);
+    });
+
+    // Test 4d: Register with existing email rejected with 409
+    await test('POST /api/auth/register with duplicate email rejected with 409', async () => {
+      const res = await fetch(`${BASE_URL}/api/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Another Student',
+          email: createdTestUserEmail,
+          password: 'securepassword123'
+        })
+      });
+      assert.strictEqual(res.status, 409);
+      const data = await res.json();
+      assert.strictEqual(data.success, false);
+    });
+
+    // Test 4e: Register validation - password too short rejected with 400
+    await test('POST /api/auth/register with short password rejected with 400', async () => {
+      const res = await fetch(`${BASE_URL}/api/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Test Cadet',
+          email: 'shortpass@college.edu',
+          password: '123'
+        })
+      });
+      assert.strictEqual(res.status, 400);
+      const data = await res.json();
+      assert.strictEqual(data.success, false);
     });
 
     // Test 5: Verify protected route /api/auth/me
@@ -205,6 +274,17 @@ async function runTests() {
     });
 
   } finally {
+    // Clean up test user if created
+    try {
+      const users = await readJsonFile(USERS_FILE, []);
+      const cleaned = users.filter(u => u.email !== createdTestUserEmail);
+      if (cleaned.length !== users.length) {
+        await writeJsonFile(USERS_FILE, cleaned);
+      }
+    } catch (err) {
+      console.error('Error cleaning up test user:', err);
+    }
+
     // Close server
     serverInstance.close();
   }

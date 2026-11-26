@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+  checkAlreadyLoggedIn();
   setupTabs();
   setupLoginForm();
   setupRegisterForm();
+  setupDemoFill();
 
   // Check URL parameter to default to register tab if requested
   const urlParams = new URLSearchParams(window.location.search);
@@ -9,6 +11,35 @@ document.addEventListener('DOMContentLoaded', () => {
     switchToRegisterTab();
   }
 });
+
+// Check if a user session already exists in localStorage
+function checkAlreadyLoggedIn() {
+  const user = typeof getLoggedInUser === 'function' ? getLoggedInUser() : null;
+  const loggedInBox = document.getElementById('already-logged-in-box');
+  const userNameEl = document.getElementById('logged-in-user-name');
+  const switchBtn = document.getElementById('btn-switch-account');
+
+  if (user && loggedInBox && userNameEl) {
+    userNameEl.textContent = `${user.name} (${user.email})`;
+    loggedInBox.style.display = 'block';
+
+    if (switchBtn) {
+      switchBtn.addEventListener('click', () => {
+        if (window.API) {
+          API.logout();
+        } else {
+          localStorage.removeItem('savorspace_token');
+          localStorage.removeItem('savorspace_user');
+        }
+        loggedInBox.style.display = 'none';
+        if (typeof initNavigation === 'function') {
+          initNavigation();
+        }
+        showToast('Logged out of previous session.', 'info');
+      });
+    }
+  }
+}
 
 // Setup Tab Switching
 function setupTabs() {
@@ -73,6 +104,22 @@ function showAuthError(message, errors = []) {
   errorBox.style.display = 'block';
 }
 
+// 1-Click Demo Credentials Quick Fill
+function setupDemoFill() {
+  const demoBtn = document.getElementById('btn-demo-fill');
+  if (!demoBtn) return;
+
+  demoBtn.addEventListener('click', () => {
+    const emailInput = document.getElementById('login-email');
+    const passInput = document.getElementById('login-password');
+    if (emailInput && passInput) {
+      emailInput.value = 'aarav@college.edu';
+      passInput.value = 'password123';
+      showToast('Demo credentials filled! Click Log In to enter.', 'info');
+    }
+  });
+}
+
 // Setup Login Form
 function setupLoginForm() {
   const form = document.getElementById('login-form');
@@ -80,6 +127,9 @@ function setupLoginForm() {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const errorBox = document.getElementById('auth-error-box');
+    if (errorBox) errorBox.style.display = 'none';
+
     const email = document.getElementById('login-email').value.trim();
     const password = document.getElementById('login-password').value;
 
@@ -89,8 +139,11 @@ function setupLoginForm() {
     try {
       const res = await API.login(email, password);
       showToast(res.message, 'success');
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirect = urlParams.get('redirect') || '/explore.html';
       setTimeout(() => {
-        window.location.href = '/explore.html';
+        window.location.href = redirect;
       }, 600);
     } catch (err) {
       showAuthError(err.message || 'Invalid email or password.');
@@ -107,10 +160,14 @@ function setupRegisterForm() {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const errorBox = document.getElementById('auth-error-box');
+    if (errorBox) errorBox.style.display = 'none';
+
     const name = document.getElementById('register-name').value.trim();
     const email = document.getElementById('register-email').value.trim();
     const password = document.getElementById('register-password').value;
-    const bio = document.getElementById('register-bio').value.trim();
+    const bioInput = document.getElementById('register-bio');
+    const bio = bioInput ? bioInput.value.trim() : '';
 
     btn.disabled = true;
     btn.textContent = 'Creating account...';
@@ -118,8 +175,11 @@ function setupRegisterForm() {
     try {
       const res = await API.register({ name, email, password, bio });
       showToast(res.message, 'success');
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirect = urlParams.get('redirect') || '/explore.html';
       setTimeout(() => {
-        window.location.href = '/explore.html';
+        window.location.href = redirect;
       }, 600);
     } catch (err) {
       showAuthError(err.message || 'Registration failed.', err.errors);
