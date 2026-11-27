@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="favGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#388e3c"/>
+      <stop offset="100%" stop-color="#1b5e20"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded container -->
+  <rect width="64" height="64" rx="16" fill="url(#favGrad)"/>
+  <!-- Minimalist Sprout Motif -->
+  <g>
+    <!-- Left Leaf -->
+    <path d="M31 37C23 37 18 30 18 22C26 22 32 26 32 34Z" fill="#a5d6a7"/>
+    <!-- Right Leaf -->
+    <path d="M33 37C41 36 46 29 46 19C37 19 31 25 31 34Z" fill="#ffffff"/>
+    <!-- Stem -->
+    <path d="M30 35C30 42 29 45 26 49C28 49 33 45 33 35Z" fill="#e8f5e9"/>
+  </g>
+</svg>
