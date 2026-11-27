@@ -171,6 +171,53 @@ async function runTests() {
       assert.strictEqual(data.user.name, 'Aarav Sharma');
     });
 
+    // Test 5b: Update profile via PUT /api/auth/me
+    await test('PUT /api/auth/me updates user profile name and bio', async () => {
+      const res = await fetch(`${BASE_URL}/api/auth/me`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({
+          name: 'Aarav Sharma Updated',
+          bio: 'Hostel chef exploring 15-minute healthy meals'
+        })
+      });
+      assert.strictEqual(res.status, 200);
+      const data = await res.json();
+      assert.strictEqual(data.success, true);
+      assert.strictEqual(data.user.name, 'Aarav Sharma Updated');
+
+      // Revert name back to Aarav Sharma
+      await fetch(`${BASE_URL}/api/auth/me`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({
+          name: 'Aarav Sharma',
+          bio: '3rd-year CS student. Passionate about 20-minute dinners and high-protein meal prep.'
+        })
+      });
+    });
+
+    // Test 5c: PUT /api/auth/me with invalid name returns 400
+    await test('PUT /api/auth/me with name < 2 chars rejected with 400', async () => {
+      const res = await fetch(`${BASE_URL}/api/auth/me`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({ name: 'A' })
+      });
+      assert.strictEqual(res.status, 400);
+      const data = await res.json();
+      assert.strictEqual(data.success, false);
+    });
+
     // Test 6: Auth protection - creating recipe without token must return 401
     await test('POST /api/recipes without auth token must be rejected with 401', async () => {
       const res = await fetch(`${BASE_URL}/api/recipes`, {

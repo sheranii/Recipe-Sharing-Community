@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { USERS_FILE, JWT_SECRET, JWT_EXPIRES_IN } = require('../config/constants');
+const { USERS_FILE, RECIPES_FILE, JWT_SECRET, JWT_EXPIRES_IN } = require('../config/constants');
 const { readJsonFile, writeJsonFile } = require('../services/fileStorage');
 const { validateRegister, validateLogin } = require('../middleware/validate');
 const { verifyToken } = require('../middleware/auth');
@@ -145,6 +145,68 @@ router.get('/me', verifyToken, async (req, res, next) => {
         bio: user.bio,
         savedRecipeIds: user.savedRecipeIds || [],
         createdAt: user.createdAt
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// PUT /api/auth/me - Update current logged-in user profile
+router.put('/me', verifyToken, async (req, res, next) => {
+  try {
+    const { name, bio } = req.body;
+    if (name !== undefined && (typeof name !== 'string' || name.trim().length < 2)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Full name must be at least 2 characters long.'
+      });
+    }
+
+    const users = await readJsonFile(USERS_FILE, []);
+    const userIndex = users.findIndex(u => u.id === req.user.id);
+
+    if (userIndex === -1) {
+      return res.status(404).json({
+        success: false,
+        message: 'User account not found.'
+      });
+    }
+
+    if (name) {
+      users[userIndex].name = name.trim().replace(/[<>]/g, '');
+    }
+    if (bio !== undefined) {
+      users[userIndex].bio = bio.trim().replace(/[<>]/g, '');
+    }
+
+    await writeJsonFile(USERS_FILE, users);
+
+    // If name changed, update recipes authored by this user
+    if (name) {
+      const recipes = await readJsonFile(RECIPES_FILE, []);
+      let recipesUpdated = false;
+      recipes.forEach(r => {
+        if (r.author && r.author.id === req.user.id) {
+          r.author.name = users[userIndex].name;
+          recipesUpdated = true;
+        }
+      });
+      if (recipesUpdated) {
+        await writeJsonFile(RECIPES_FILE, recipes);
+      }
+    }
+
+    res.json({
+      success: true,
+      message: 'Profile updated successfully!',
+      user: {
+        id: users[userIndex].id,
+        name: users[userIndex].name,
+        email: users[userIndex].email,
+        bio: users[userIndex].bio,
+        savedRecipeIds: users[userIndex].savedRecipeIds || [],
+        createdAt: users[userIndex].createdAt
       }
     });
   } catch (err) {

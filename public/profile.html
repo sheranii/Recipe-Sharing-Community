@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - SavorSpace</title>
+  <meta name="description" content="View and manage your student profile, published recipes, and bookmarks on SavorSpace.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <a href="/" class="brand-logo">
+          <div class="brand-icon">🌱</div>
+          <div>
+            <span class="brand-text">SavorSpace</span>
+            <span class="brand-tagline">Recipe Community</span>
+          </div>
+        </a>
+
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu">☰</button>
+
+        <div class="nav-links-wrapper" id="nav-links-wrapper">
+          <ul class="nav-links">
+            <li><a href="/" class="nav-link">Home</a></li>
+            <li><a href="/explore.html" class="nav-link">Recipes</a></li>
+            <li><a href="/add-recipe.html" class="nav-link">Add Recipe</a></li>
+            <li><a href="/saved.html" class="nav-link">Saved</a></li>
+            <li><a href="/profile.html" class="nav-link active">Profile</a></li>
+          </ul>
+
+          <div class="nav-auth" id="nav-auth-container">
+            <a href="/login.html" class="btn btn-outline btn-sm">Log In</a>
+            <a href="/login.html?mode=register" class="btn btn-primary btn-sm">Join</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Profile Page Main Content -->
+  <main class="container" style="padding-top: 36px; padding-bottom: 60px;">
+    
+    <!-- Guest Alert (shown if user not logged in) -->
+    <div id="profile-guest-view" style="display: none; max-width: 520px; margin: 40px auto;">
+      <div class="empty-state">
+        <div class="empty-state-icon">👤</div>
+        <h2 class="empty-state-title">Sign in to view your profile</h2>
+        <p class="empty-state-desc">
+          Log in with your student account to manage your published dishes, view bookmarks, and update your personal bio.
+        </p>
+        <div style="display: flex; gap: 10px; justify-content: center;">
+          <a href="/login.html?redirect=/profile.html" class="btn btn-primary btn-sm">Log In</a>
+          <a href="/login.html?mode=register&redirect=/profile.html" class="btn btn-outline btn-sm">Create Account</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Authenticated Profile View -->
+    <div id="profile-auth-view" style="display: none;">
+      
+      <!-- Top Profile Card -->
+      <section class="profile-header-card" id="profile-card">
+        <div class="profile-user-info">
+          <div class="profile-avatar-large" id="profile-avatar">U</div>
+          <div class="profile-details">
+            <h1 id="profile-name">Student Chef</h1>
+            <div class="profile-email">
+              <span id="profile-email">student@college.edu</span>
+              <span class="badge badge-category" style="font-size: 0.72rem; padding: 2px 8px;">College Cook</span>
+            </div>
+            <p class="profile-bio" id="profile-bio">No bio added yet.</p>
+            <div class="profile-meta-joined" id="profile-joined">Member of SavorSpace Community</div>
+          </div>
+        </div>
+
+        <div class="profile-header-actions">
+          <button type="button" class="btn btn-outline btn-sm" id="btn-toggle-edit">
+            ✏️ Edit Profile
+          </button>
+          <a href="/add-recipe.html" class="btn btn-primary btn-sm">
+            ➕ Share Recipe
+          </a>
+          <button type="button" class="btn btn-outline btn-sm" id="btn-profile-logout" style="color: #c0392b; border-color: #f2dede;">
+            Log Out
+          </button>
+        </div>
+      </section>
+
+      <!-- Stats Grid -->
+      <section class="profile-stats-grid">
+        <div class="profile-stat-box">
+          <div class="profile-stat-icon">🍳</div>
+          <div>
+            <div class="profile-stat-number" id="stat-recipes-count">0</div>
+            <div class="profile-stat-label">Recipes Published</div>
+          </div>
+        </div>
+
+        <div class="profile-stat-box">
+          <div class="profile-stat-icon">❤️</div>
+          <div>
+            <div class="profile-stat-number" id="stat-saved-count">0</div>
+            <div class="profile-stat-label">Saved Recipes</div>
+          </div>
+        </div>
+
+        <div class="profile-stat-box">
+          <div class="profile-stat-icon">⭐</div>
+          <div>
+            <div class="profile-stat-number" id="stat-reviews-count">0</div>
+            <div class="profile-stat-label">Reviews Received</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tabs Bar -->
+      <div class="profile-tabs-bar">
+        <button type="button" class="profile-tab-button active" id="tab-btn-recipes" data-tab="recipes">
+          🍳 My Published Recipes (<span id="tab-recipes-counter">0</span>)
+        </button>
+        <button type="button" class="profile-tab-button" id="tab-btn-saved" data-tab="saved">
+          ❤️ Saved Recipes (<span id="tab-saved-counter">0</span>)
+        </button>
+        <button type="button" class="profile-tab-button" id="tab-btn-settings" data-tab="settings">
+          ⚙️ Edit Profile
+        </button>
+      </div>
+
+      <!-- Tab 1: My Published Recipes Content -->
+      <div id="tab-content-recipes" class="profile-tab-pane">
+        <div class="recipe-grid" id="my-recipes-grid">
+          <div style="grid-column: 1 / -1; text-align: center; padding: 30px; color: var(--text-muted);">
+            Loading your recipes...
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Saved Recipes Content -->
+      <div id="tab-content-saved" class="profile-tab-pane" style="display: none;">
+        <div class="recipe-grid" id="my-saved-grid">
+          <div style="grid-column: 1 / -1; text-align: center; padding: 30px; color: var(--text-muted);">
+            Loading your saved recipes...
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Edit Profile Content -->
+      <div id="tab-content-settings" class="profile-tab-pane" style="display: none;">
+        <div class="profile-edit-box">
+          <h2 style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 16px; color: var(--text-main);">
+            Update Profile Information
+          </h2>
+          <form id="edit-profile-form">
+            <div class="form-group">
+              <label for="edit-profile-name" class="form-label">Full Name</label>
+              <input type="text" id="edit-profile-name" class="form-control" required minlength="2">
+            </div>
+
+            <div class="form-group">
+              <label for="edit-profile-email" class="form-label">College Email (Read-Only)</label>
+              <input type="email" id="edit-profile-email" class="form-control" disabled style="background-color: #f8fafc; cursor: not-allowed;">
+            </div>
+
+            <div class="form-group">
+              <label for="edit-profile-bio" class="form-label">About You / Cooking Bio</label>
+              <textarea id="edit-profile-bio" class="form-control" rows="3" placeholder="Share your favorite cuisines, hostel cooking hacks, or cooking goals..."></textarea>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+              <button type="submit" id="btn-save-profile" class="btn btn-primary btn-sm">
+                Save Changes
+              </button>
+              <button type="button" id="btn-cancel-profile" class="btn btn-outline btn-sm">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <span>SavorSpace Recipe Sharing Community • Student Project</span>
+        <span><a href="/explore.html">Browse All Recipes</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+</html>
