@@ -47,11 +47,23 @@ function initNavigation() {
 
   if (user) {
     const initial = user.name ? user.name.charAt(0).toUpperCase() : 'U';
+    const isProfilePage = window.location.pathname.endsWith('/profile.html') || window.location.pathname.endsWith('/profile');
+
+    // Add Profile to mobile/desktop nav links if not present
+    const navLinks = document.querySelector('.nav-links');
+    if (navLinks && !document.getElementById('nav-profile-item')) {
+      const profileLi = document.createElement('li');
+      profileLi.id = 'nav-profile-item';
+      profileLi.innerHTML = `<a href="/profile.html" class="nav-link ${isProfilePage ? 'active' : ''}">Profile</a>`;
+      navLinks.appendChild(profileLi);
+    }
+
     authContainer.innerHTML = `
-      <div class="user-menu-pill">
-        <span class="user-avatar-initial">${initial}</span>
-        <span>${escapeHtml(user.name)}</span>
-      </div>
+      <a href="/profile.html" class="user-menu-pill ${isProfilePage ? 'active' : ''}" id="nav-profile-pill" title="${escapeHtml(user.name)}" aria-label="Profile: ${escapeHtml(user.name)}">
+        <span class="user-avatar-initial" title="${escapeHtml(user.name)}" data-username="${escapeHtml(user.name)}">${initial}</span>
+        <span class="profile-nav-text">Profile</span>
+        <span class="user-hover-tooltip">${escapeHtml(user.name)}</span>
+      </a>
       <button id="logout-btn" class="btn btn-outline btn-sm">Log Out</button>
     `;
 

@@ -34,5 +34,14 @@
       "recipe-3"
     ],
     "createdAt": "2026-09-12T08:15:00.000Z"
+  },
+  {
+    "id": "user-1795789196528",
+    "name": "Vansh Garg",
+    "email": "vanshgarg1782006@gmail.com",
+    "password": "$2b$10$9Ygyr285Wsjs66QX2b.Ab.WECuOEoQU2jCQWSVeDFV9eMwVlsEzJK",
+    "bio": "OP",
+    "savedRecipeIds": [],
+    "createdAt": "2026-11-27T14:19:56.532Z"
   }
 ]

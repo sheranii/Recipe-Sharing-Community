@@ -147,6 +147,17 @@ const API = {
     return this.request('/auth/me');
   },
 
+  async updateProfile(profileData) {
+    const res = await this.request('/auth/me', {
+      method: 'PUT',
+      body: JSON.stringify(profileData)
+    });
+    if (res.user) {
+      localStorage.setItem('savorspace_user', JSON.stringify(res.user));
+    }
+    return res;
+  },
+
   async getDemoUsers() {
     return this.request('/auth/demo-users');
   },
